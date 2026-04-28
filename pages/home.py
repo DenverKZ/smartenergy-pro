@@ -3,12 +3,12 @@ from datetime import datetime
 from utils.api import get_weather
 
 def show():
-    st.title("⚡ SmartEnergy Pro")
+    st.title("⚡ SmartEnergyPro")
     st.markdown(f"### Система мониторинга на {datetime.now().strftime('%d.%m.%Y')}")
     
     st.markdown("""
     <div class="description-text">
-        Добро пожаловать в панель управления SmartEnergy Pro. Система обеспечивает непрерывный контроль 
+        Добро пожаловать в панель управления SmartEnergyPro. Система обеспечивает непрерывный контроль 
         потребления топливно-энергетических ресурсов (ТЭР) на промышленных объектах.
     </div>
     """, unsafe_allow_html=True)
