@@ -61,46 +61,42 @@ with st.sidebar:
         st.markdown(f"**¥1 CNY**  \n{rates['CNY']} ₸")
     st.markdown("---")
     
-    # ========== НАВИГАЦИОННЫЕ КНОПКИ ВМЕСТО РАДИОКНОПОК ==========
+    # ========== НАВИГАЦИОННЫЕ КНОПКИ В 1 СТОЛБЕЦ ==========
     # Сохраняем выбранную страницу в session_state
     if 'page' not in st.session_state:
         st.session_state.page = "🏠 Главная"
     
-    # Рисуем ряд кнопок в 3 ряда по 2 кнопки
     st.markdown("**📋 Меню**")
     
-    # Первый ряд (2 кнопки)
-    col1, col2 = st.columns(2)
-    with col1:
-        if st.button("🏠 Главная", use_container_width=True):
-            st.session_state.page = "🏠 Главная"
-            st.rerun()  # Перезагружаем страницу, чтобы применить изменения
-    with col2:
-        if st.button("📊 Аналитика", use_container_width=True):
-            st.session_state.page = "📊 Аналитика"
-            st.rerun()
+    # Кнопка 1: Главная
+    if st.button("🏠 Главная", use_container_width=True):
+        st.session_state.page = "🏠 Главная"
+        st.rerun()
     
-    # Второй ряд (2 кнопки)
-    col1, col2 = st.columns(2)
-    with col1:
-        if st.button("🌤️ Погода", use_container_width=True):
-            st.session_state.page = "🌤️ Погода"
-            st.rerun()
-    with col2:
-        if st.button("📅 Календарь", use_container_width=True):
-            st.session_state.page = "📅 Календарь"
-            st.rerun()
+    # Кнопка 2: Аналитика
+    if st.button("📊 Аналитика", use_container_width=True):
+        st.session_state.page = "📊 Аналитика"
+        st.rerun()
     
-    # Третий ряд (2 кнопки)
-    col1, col2 = st.columns(2)
-    with col1:
-        if st.button("⚙️ Настройки", use_container_width=True):
-            st.session_state.page = "⚙️ Настройки"
-            st.rerun()
-    with col2:
-        if st.button("🆘 Поддержка", use_container_width=True):
-            st.session_state.page = "🆘 Поддержка"
-            st.rerun()
+    # Кнопка 3: Погода
+    if st.button("🌤️ Погода", use_container_width=True):
+        st.session_state.page = "🌤️ Погода"
+        st.rerun()
+    
+    # Кнопка 4: Календарь
+    if st.button("📅 Календарь", use_container_width=True):
+        st.session_state.page = "📅 Календарь"
+        st.rerun()
+    
+    # Кнопка 5: Настройки
+    if st.button("⚙️ Настройки", use_container_width=True):
+        st.session_state.page = "⚙️ Настройки"
+        st.rerun()
+    
+    # Кнопка 6: Поддержка
+    if st.button("🆘 Поддержка", use_container_width=True):
+        st.session_state.page = "🆘 Поддержка"
+        st.rerun()
     
     st.markdown("---")
     
