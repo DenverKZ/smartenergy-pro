@@ -27,7 +27,8 @@ with st.sidebar:
         st.markdown(f"**₽1 RUB**  \n{rates['RUB']} ₸")
         st.markdown(f"**¥1 CNY**  \n{rates['CNY']} ₸")
     st.markdown("---")
-    page = st.radio("📋 Меню", ["🏠 Главная", "📊 Аналитика", "🌤️ Погода", "📅 Календарь", "⚙️ Настройки", "🆘 Поддержка"], label_visibility="collapsed")    st.markdown("---")
+    page = st.radio("📋 Меню", ["🏠 Главная", "📊 Аналитика", "🌤️ Погода", "📅 Календарь", "⚙️ Настройки", "🆘 Поддержка"], label_visibility="collapsed")
+    st.markdown("---")
     st.caption("v.3.4.2 (Stable Edition)")
     st.caption("© 2026 SmartEnergy Systems")
 
