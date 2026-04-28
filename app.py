@@ -27,8 +27,7 @@ with st.sidebar:
         st.markdown(f"**₽1 RUB**  \n{rates['RUB']} ₸")
         st.markdown(f"**¥1 CNY**  \n{rates['CNY']} ₸")
     st.markdown("---")
-    page = st.radio("📋 Меню", ["🏠 Главная", "📊 Аналитика", "🌤️ Погода", "📅 Календарь", "⚙️ Настройки"], label_visibility="collapsed")
-    st.markdown("---")
+    page = st.radio("📋 Меню", ["🏠 Главная", "📊 Аналитика", "🌤️ Погода", "📅 Календарь", "⚙️ Настройки", "🆘 Поддержка"], label_visibility="collapsed")    st.markdown("---")
     st.caption("v.3.4.2 (Stable Edition)")
     st.caption("© 2026 SmartEnergy Systems")
 
@@ -45,5 +44,8 @@ elif page == "📅 Календарь":
     calendar.show()
 elif page == "⚙️ Настройки":
     settings.show()
+elif page == "🆘 Поддержка":
+    import pages.support as support
+    support.show()
 
 st.markdown('<div class="footer">SmartEnergy Pro — промышленная платформа энергомониторинга</div>', unsafe_allow_html=True)
