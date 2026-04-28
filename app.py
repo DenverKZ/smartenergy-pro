@@ -33,10 +33,7 @@ with st.sidebar:
     st.markdown("---")
     page = st.radio("📋 Меню", ["🏠 Главная", "📊 Аналитика", "🌤️ Погода", "📅 Календарь", "⚙️ Настройки", "🆘 Поддержка"], label_visibility="collapsed")
     st.markdown("---")
-    st.markdown("---")  # ← добавить разделитель
-    st.markdown("<p style='text-align: center; color: gray; font-size: 12px;'>Версия 3.4.2 | SmartEnergyPro © 2026</p>", unsafe_allow_html=True)  # ← вставить сюда
-    st.caption("v.3.4.2 (Stable Edition)")
-    st.caption("© 2026 SmartEnergyPro")
+    st.markdown("<p style='text-align: center; color: gray; font-size: 12px;'>Версия 3.4.2 | SmartEnergyPro © 2026</p>", unsafe_allow_html=True)
 
 if page == "🏠 Главная":
     home.show()
@@ -50,4 +47,3 @@ elif page == "⚙️ Настройки":
     settings.show()
 elif page == "🆘 Поддержка":
     support.show()
-
