@@ -4,8 +4,12 @@ from utils.api import get_exchange_rates
 from utils.data_manager import init_data
 import pages.home as home
 import pages.settings as settings
+import pages.analytics as analytics
+import pages.weather as weather
+import pages.calendar as calendar
+import pages.support as support
 
-st.set_page_config(page_title="SmartEnergy Pro", page_icon="⚡", layout="wide")
+st.set_page_config(page_title="SmartEnergyPro", page_icon="⚡", layout="wide")
 
 init_theme()
 init_data()
@@ -30,23 +34,20 @@ with st.sidebar:
     page = st.radio("📋 Меню", ["🏠 Главная", "📊 Аналитика", "🌤️ Погода", "📅 Календарь", "⚙️ Настройки", "🆘 Поддержка"], label_visibility="collapsed")
     st.markdown("---")
     st.caption("v.3.4.2 (Stable Edition)")
-    st.caption("© 2026 SmartEnergy Systems")
+    st.caption("© 2026 SmartEnergyPro")
 
 if page == "🏠 Главная":
     home.show()
 elif page == "📊 Аналитика":
-    import pages.analytics as analytics
     analytics.show()
 elif page == "🌤️ Погода":
-    import pages.weather as weather
     weather.show()
 elif page == "📅 Календарь":
-    import pages.calendar as calendar
     calendar.show()
 elif page == "⚙️ Настройки":
     settings.show()
 elif page == "🆘 Поддержка":
-    import pages.support as support
     support.show()
 
-st.markdown('<div class="footer">SmartEnergy Pro — промышленная платформа энергомониторинга</div>', unsafe_allow_html=True)
+st.markdown("---")
+st.markdown("<p style='text-align: center; color: gray; font-size: 12px;'>Версия 3.4.2 | SmartEnergyPro © 2026</p>", unsafe_allow_html=True)
