@@ -1,6 +1,7 @@
 import streamlit as st
 
 def init_theme():
+    """Загружает сохранённую тему из параметров URL"""
     if 'theme' not in st.session_state:
         st.session_state.theme = "dark"
     query_params = st.query_params
@@ -8,6 +9,7 @@ def init_theme():
         st.session_state.theme = query_params['theme']
 
 def get_theme_colors():
+    """Возвращает цвета для текущей темы (светлая/тёмная)"""
     themes = {
         "light": {
             "bg": "#ffffff", "bg_secondary": "#f3f4f6",
@@ -25,16 +27,23 @@ def get_theme_colors():
     return themes.get(st.session_state.theme, themes["dark"])
 
 def get_css(colors):
+    """Генерирует CSS код на основе выбранной темы"""
     return f"""
     <style>
+        /* Основной фон */
         .stApp {{ background-color: {colors["bg"]}; }}
-        h1, h2, h3 {{ color: {colors["text"]} !important; }}
-        .description-text {{
-            border-left: 3px solid {colors["accent"]};
-            padding-left: 1rem;
-            margin: 1rem 0;
-            color: {colors["text_secondary"]};
+        
+        /* Заголовки */
+        h1, h2, h3, .stMarkdown h1, .stMarkdown h2, .stMarkdown h3 {{
+            color: {colors["text"]} !important;
         }}
+        
+        /* Текст */
+        .stMarkdown, .stMetric label, .stMetric value {{
+            color: {colors["text"]};
+        }}
+        
+        /* Карточки метрик */
         .metric-card {{
             background-color: {colors["card_bg"]};
             border: 1px solid {colors["card_border"]};
@@ -52,14 +61,44 @@ def get_css(colors):
             color: {colors["text_secondary"]};
             text-transform: uppercase;
         }}
+        
+        /* Боковая панель */
         [data-testid="stSidebar"] {{
             background-color: {colors["bg_secondary"]};
             border-right: 1px solid {colors["border"]};
         }}
+        
+        /* Стиль для кнопок темы (иконки) */
+        .theme-icon {{
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }}
+        .theme-icon:hover {{
+            background-color: {colors["border"]};
+            transform: scale(1.1);
+        }}
+        
+        /* Кнопки */
         .stButton button {{
             background-color: {colors["accent"]};
             color: {colors["bg"]};
+            font-weight: 600;
+            border: none;
         }}
+        .stButton button:hover {{
+            background-color: {colors["accent_light"]};
+            transform: translateY(-1px);
+        }}
+        
+        /* Разделитель */
+        hr {{ border-color: {colors["border"]}; margin: 1rem 0; }}
+        
+        /* Футер */
         .footer {{
             text-align: center;
             padding: 1rem;
@@ -72,17 +111,25 @@ def get_css(colors):
     """
 
 def theme_selector():
-    st.markdown("**🎨 Тема оформления**")
+    """Отображает три иконки для выбора темы (светлая/тёмная/системная)"""
+    
+    # Три колонки для иконок
     col1, col2, col3 = st.columns(3)
+    
     with col1:
-        if st.button("🌞 Светлая", use_container_width=True, key="theme_light"):
+        # Кнопка "Светлая тема" (только иконка)
+        if st.button("🌞", key="theme_light", use_container_width=True, help="Светлая тема"):
             st.query_params["theme"] = "light"
             st.rerun()
+    
     with col2:
-        if st.button("🌙 Тёмная", use_container_width=True, key="theme_dark"):
+        # Кнопка "Тёмная тема" (только иконка)
+        if st.button("🌙", key="theme_dark", use_container_width=True, help="Тёмная тема"):
             st.query_params["theme"] = "dark"
             st.rerun()
+    
     with col3:
-        if st.button("💻 Системная", use_container_width=True, key="theme_system"):
+        # Кнопка "Системная тема" (только иконка)
+        if st.button("💻", key="theme_system", use_container_width=True, help="Системная тема"):
             st.query_params["theme"] = "system"
             st.rerun()
